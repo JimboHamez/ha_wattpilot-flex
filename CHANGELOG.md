@@ -14,7 +14,8 @@ for attribution.
 - The repository is now [JimboHamez/ha_wattpilot-flex](https://github.com/JimboHamez/ha_wattpilot-flex)
   (renamed from `JimboHamez/wattpilot-HA`). The `manifest.json` documentation and issue-tracker
   links, the README and info.md badges and links, and the changelog compare links point at the new
-  name. GitHub redirects the old URLs, so existing HACS installs keep working.
+  name. HACS now lists the integration as **Fronius Wattpilot Flex** (was *Fronius Wattpilot-HA*).
+  GitHub redirects the old URLs, so existing HACS installs keep working.
 
 ## [0.12.1] - 2026-09-23
 
