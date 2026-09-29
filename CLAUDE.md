@@ -41,10 +41,14 @@ wallbox / EV charging devices. It wraps the unofficial, reverse-engineered async
 charger over a WebSocket (locally on the LAN, or via the go-e cloud). There is no official
 Fronius API — everything is built on that community library and may break at any time.
 
-This repo is a **downstream fork** of [mk-maddin/wattpilot-HA](https://github.com/mk-maddin/wattpilot-HA)
-that has diverged substantially (0.5.0 replaced the vendored synchronous `wattpilot` module with
-async `wattpilot-api`, plus translated entities, discovery/reauth, quality-scale work, and
-human-scale entity units). Issues are tracked in **this** repo, not upstream.
+This repo is [JimboHamez/ha_wattpilot-flex](https://github.com/JimboHamez/ha_wattpilot-flex), which was
+renamed from `JimboHamez/wattpilot-HA` on 2026-09-29 and is no longer a GitHub fork. GitHub redirects
+the old URLs, but all links use the new name, so keep it that way. The code began as a **downstream fork** of
+[mk-maddin/wattpilot-HA](https://github.com/mk-maddin/wattpilot-HA) and has diverged substantially
+(0.5.0 replaced the vendored synchronous `wattpilot` module with async `wattpilot-api`, plus
+translated entities, discovery/reauth, quality-scale work, and human-scale entity units). Issues are
+tracked in **this** repo, not upstream. Links to `mk-maddin/wattpilot-HA` are credit to the original
+project, so leave them as they are.
 
 The installable component lives entirely in `custom_components/wattpilot/`. Everything else
 (`packages/`, `doc/`, `info.md`, `set_values_test.py`) is documentation, HA config examples,
@@ -367,7 +371,9 @@ poll has no such caller, so those keep logging and degrading. Do not extend the 
 past actions without agreeing that separately.
 
 ## HACS packaging
-`hacs.json` (repo root) declares the HACS metadata; `"homeassistant"` is the **minimum HA version**
+`hacs.json` (repo root) declares the HACS metadata. `"name"` is the name HACS shows,
+**Fronius Wattpilot Flex**. The integration's own name in Home Assistant is `manifest.json`'s
+`"name"`, "Fronius Wattpilot", and its domain stays `wattpilot`. `"homeassistant"` is the **minimum HA version**
 and must not drift below what the code actually needs. It declares **2024.11**, set by the config
 flow: `_get_reauth_entry`, `_get_reconfigure_entry` and `_abort_if_unique_id_mismatch` all arrived
 in that release (`entry.runtime_data`, the previous floor, only needed 2024.6). Bump it whenever a
